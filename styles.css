@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    background: white;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Reset */
+#resetBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: crimson;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Game container */
+#gameContainer {
+    position: relative;
+    width: 90vw;
+    max-width: 400px;
+}
+
+/* Instruction */
+#instruction {
+    position: absolute;
+    top: -40px;
+    font-size: 22px;
+    font-weight: bold;
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+    0% {opacity:1;}
+    70% {opacity:1;}
+    100% {opacity:0;}
+}
+
+/* Grid */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+}
+
+.cell {
+    background: #eee;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(18px, 5vw, 28px);
+}
+
+/* Line */
+#lineLayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Final screen */
+#finalScreen {
+    display: none; /* IMPORTANT */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+    overflow: hidden;
+}
+
+/* Message */
+#message {
+    font-size: clamp(24px, 6vw, 42px);
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+/* Arrow */
+#tapArrow {
+    font-size: clamp(16px, 4vw, 22px);
+    margin: 10px 0;
+    opacity: 0;
+}
+
+/* 21 */
+#twentyone {
+    font-size: clamp(80px, 20vw, 120px);
+    color: gold;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Bounce */
+@keyframes bounce {
+    from {transform: translateY(0);}
+    to {transform: translateY(8px);}
+}
+
+/* Balloons */
+/* Balloon base */
+.balloon {
+    position: absolute;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: floatUp 6s infinite ease-in;
+}
+
+/* Balloon string (thread) */
+.balloon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background: #555;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+.balloon:nth-child(1){background:red; left:10%;}
+.balloon:nth-child(2){background:blue; left:30%;}
+.balloon:nth-child(3){background:green; left:50%;}
+.balloon:nth-child(4){background:orange; left:70%;}
+.balloon:nth-child(5){background:purple; left:85%;}
+
+@keyframes floatUp {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-120vh);}
+}
